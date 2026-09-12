@@ -1,6 +1,6 @@
 /* =========================================================
    HireHub - Recruiter Applicants
-   Modern recruiter dashboard styling
+   Professional SaaS Recruiter UI
    ========================================================= */
 
 * {
@@ -9,46 +9,46 @@
 
 .recruiter-applicants-page {
   min-height: 100vh;
-  background: #f5f7fb;
-  color: #172033;
+  background: #f8fafc;
+  color: #0f172a;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
-/* ---------------- Header ---------------- */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .recruiter-page-header {
   background: #ffffff;
-  border-bottom: 1px solid #e7eaf0;
-  position: relative;
-  z-index: 2;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .recruiter-header-container {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 28px 30px;
+  padding: 24px 28px 32px;
 }
 
 .back-to-jobs {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #536174;
+  margin-bottom: 26px;
+  color: #64748b;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 28px;
   transition: color 0.2s ease;
 }
 
 .back-to-jobs:hover {
-  color: #4f46e5;
+  color: #2563eb;
 }
 
 .recruiter-header-content {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  justify-content: space-between;
   gap: 24px;
 }
 
@@ -56,32 +56,36 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #4f46e5;
-  background: #eef2ff;
-  border: 1px solid #e0e7ff;
+  margin-bottom: 12px;
   padding: 7px 11px;
+  border: 1px solid #dbeafe;
   border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  margin-bottom: 13px;
 }
 
 .recruiter-header-content h1 {
   margin: 0;
-  color: #101828;
-  font-size: clamp(32px, 4vw, 44px);
+  color: #0f172a;
+  font-size: clamp(30px, 4vw, 42px);
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
 .recruiter-header-content p {
+  max-width: 680px;
   margin: 10px 0 0;
-  color: #667085;
-  font-size: 16px;
+  color: #64748b;
+  font-size: 15px;
   line-height: 1.6;
-  max-width: 650px;
 }
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
 
 .header-refresh-btn,
 .toolbar-refresh-btn,
@@ -90,28 +94,21 @@
 .view-resume-btn,
 .shortlist-btn,
 .reject-btn,
-.select-btn {
-  border: 0;
-  border-radius: 10px;
+.select-btn,
+.secondary-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  cursor: pointer;
+  border-radius: 9px;
   font: inherit;
   font-weight: 700;
+  cursor: pointer;
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
-    background 0.18s ease;
-}
-
-.header-refresh-btn {
-  min-height: 44px;
-  padding: 0 17px;
-  color: #ffffff;
-  background: #4f46e5;
-  box-shadow: 0 7px 18px rgba(79, 70, 229, 0.2);
+    background 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .header-refresh-btn:hover,
@@ -120,37 +117,78 @@
 .view-resume-btn:hover,
 .shortlist-btn:hover,
 .reject-btn:hover,
-.select-btn:hover {
+.select-btn:hover,
+.secondary-btn:hover {
   transform: translateY(-1px);
 }
 
-/* ---------------- Main ---------------- */
+.header-refresh-btn:disabled,
+.toolbar-refresh-btn:disabled,
+.shortlist-btn:disabled,
+.reject-btn:disabled,
+.select-btn:disabled,
+.secondary-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
+   HEADER REFRESH
+   ========================================================= */
+
+.header-refresh-btn {
+  min-height: 43px;
+  padding: 0 16px;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+.header-refresh-btn:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 .recruiter-main {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 30px 28px 60px;
 }
 
-/* ---------------- Statistics ---------------- */
+/* =========================================================
+   SUCCESS MESSAGE
+   ========================================================= */
+
+.recruiter-success-box {
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.06);
+}
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
 
 .applicant-stat-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
 .applicant-stat-card {
-  min-height: 122px;
-  padding: 22px;
-  background: #ffffff;
-  border: 1px solid #e8ebf2;
-  border-radius: 16px;
+  min-height: 118px;
   display: flex;
   align-items: center;
   gap: 15px;
-  box-shadow: 0 5px 20px rgba(16, 24, 40, 0.045);
+  padding: 21px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -158,71 +196,73 @@
 
 .applicant-stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(16, 24, 40, 0.08);
+  box-shadow: 0 9px 24px rgba(15, 23, 42, 0.07);
 }
 
 .stat-icon {
-  width: 50px;
-  height: 50px;
-  flex: 0 0 50px;
-  border-radius: 13px;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
   display: grid;
   place-items: center;
+  border-radius: 12px;
 }
 
 .stat-blue {
-  color: #2563eb;
   background: #eff6ff;
+  color: #2563eb;
 }
 
 .stat-purple {
-  color: #7c3aed;
   background: #f5f3ff;
+  color: #7c3aed;
 }
 
 .stat-orange {
-  color: #ea580c;
   background: #fff7ed;
+  color: #ea580c;
 }
 
 .stat-green {
-  color: #16a34a;
   background: #f0fdf4;
+  color: #16a34a;
 }
 
 .applicant-stat-card span {
   display: block;
-  color: #667085;
-  font-size: 13px;
-  font-weight: 600;
   margin-bottom: 5px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .applicant-stat-card strong {
   display: block;
-  color: #101828;
-  font-size: 29px;
+  color: #0f172a;
+  font-size: 28px;
   line-height: 1;
 }
 
-/* ---------------- Toolbar ---------------- */
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
 
 .applicants-toolbar {
-  background: #ffffff;
-  border: 1px solid #e8ebf2;
-  border-radius: 16px;
-  padding: 20px 22px;
-  margin-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  margin-bottom: 18px;
+  padding: 19px 21px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
 }
 
 .applicants-toolbar h2 {
   margin: 0;
-  color: #101828;
-  font-size: 21px;
+  color: #0f172a;
+  font-size: 20px;
   letter-spacing: -0.02em;
 }
 
@@ -230,65 +270,77 @@
   display: inline-flex;
   min-width: 27px;
   height: 27px;
-  padding: 0 8px;
-  margin-left: 7px;
   align-items: center;
   justify-content: center;
+  margin-left: 7px;
+  padding: 0 8px;
   border-radius: 999px;
-  background: #eef2ff;
-  color: #4f46e5;
-  font-size: 13px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 12px;
   vertical-align: middle;
 }
 
 .applicants-toolbar p {
   margin: 6px 0 0;
-  color: #667085;
-  font-size: 14px;
+  color: #64748b;
+  font-size: 13px;
 }
 
 .toolbar-refresh-btn {
   min-height: 40px;
   padding: 0 14px;
-  color: #344054;
-  background: #f8fafc;
-  border: 1px solid #dfe4ec;
+  border: 1px solid #dbe2ea;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
 }
 
 .toolbar-refresh-btn:hover {
-  background: #eef2ff;
-  color: #4f46e5;
-  border-color: #c7d2fe;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
 }
 
-/* ---------------- Candidate card ---------------- */
+/* =========================================================
+   APPLICANT LIST
+   ========================================================= */
 
 .recruiter-applicant-list {
   display: grid;
   gap: 18px;
 }
 
+/* =========================================================
+   CANDIDATE CARD
+   ========================================================= */
+
 .recruiter-candidate-card {
-  background: #ffffff;
-  border: 1px solid #e5e9f0;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: 0 6px 22px rgba(16, 24, 40, 0.045);
   overflow: hidden;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 17px;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.045);
 }
+
+/* =========================================================
+   CANDIDATE TOP
+   ========================================================= */
 
 .candidate-top {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 21px;
-  border-bottom: 1px solid #edf0f4;
+  border-bottom: 1px solid #edf2f7;
 }
 
 .candidate-profile {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 14px;
   min-width: 0;
 }
 
@@ -298,12 +350,12 @@
   flex: 0 0 58px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 15px;
+  background: #2563eb;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
-  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 7px 17px rgba(37, 99, 235, 0.2);
 }
 
 .candidate-heading {
@@ -319,23 +371,38 @@
 
 .candidate-name-row h3 {
   margin: 0;
-  color: #101828;
+  color: #0f172a;
   font-size: 19px;
   line-height: 1.3;
 }
 
 .candidate-headline {
   margin: 5px 0 0;
-  color: #475467;
-  font-size: 14px;
+  color: #475569;
+  font-size: 13px;
 }
 
 .candidate-id {
   display: block;
   margin-top: 6px;
-  color: #98a2b3;
-  font-size: 12px;
+  color: #94a3b8;
+  font-size: 11px;
 }
+
+.application-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  padding-top: 4px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
 
 .candidate-status {
   display: inline-flex;
@@ -349,47 +416,38 @@
 }
 
 .status-applied {
-  color: #1d4ed8;
   background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .status-shortlisted {
-  color: #b45309;
   background: #fef3c7;
+  color: #b45309;
 }
 
 .status-selected {
-  color: #15803d;
   background: #dcfce7;
+  color: #15803d;
 }
 
 .status-rejected {
-  color: #b91c1c;
   background: #fee2e2;
+  color: #b91c1c;
 }
 
-.application-date {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  flex-shrink: 0;
-  color: #667085;
-  font-size: 12px;
-  font-weight: 600;
-  padding-top: 4px;
-}
-
-/* ---------------- Details ---------------- */
+/* =========================================================
+   CANDIDATE DETAILS
+   ========================================================= */
 
 .candidate-details {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
   margin: 21px 0;
-  background: #edf0f4;
-  border: 1px solid #edf0f4;
-  border-radius: 13px;
   overflow: hidden;
+  background: #e5eaf0;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
 }
 
 .candidate-detail {
@@ -402,68 +460,72 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #98a2b3;
-  font-size: 11px;
-  font-weight: 700;
   margin-bottom: 7px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .candidate-detail > span svg {
-  color: #667085;
+  color: #64748b;
 }
 
 .candidate-detail strong {
   display: block;
-  color: #344054;
+  overflow-wrap: anywhere;
+  color: #334155;
   font-size: 13px;
   line-height: 1.45;
-  overflow-wrap: anywhere;
 }
 
-/* ---------------- About ---------------- */
+/* =========================================================
+   ABOUT
+   ========================================================= */
 
 .candidate-about {
-  padding: 17px 18px;
   margin-bottom: 18px;
-  background: #f8faff;
-  border: 1px solid #e6ebff;
+  padding: 17px 18px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
   border-radius: 13px;
 }
 
 .candidate-about h4 {
   margin: 0 0 7px;
-  color: #344054;
+  color: #334155;
   font-size: 13px;
 }
 
 .candidate-about p {
   margin: 0;
-  color: #667085;
-  font-size: 14px;
+  color: #64748b;
+  font-size: 13px;
   line-height: 1.65;
 }
 
-/* ---------------- Resume ---------------- */
+/* =========================================================
+   RESUME
+   ========================================================= */
 
 .candidate-resume {
   min-height: 66px;
-  padding: 12px 14px;
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 13px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
 }
 
 .resume-left {
-  min-width: 0;
   display: flex;
   align-items: center;
   gap: 11px;
+  min-width: 0;
 }
 
 .resume-icon {
@@ -473,8 +535,8 @@
   display: grid;
   place-items: center;
   border-radius: 10px;
-  color: #4f46e5;
-  background: #eef2ff;
+  background: #eff6ff;
+  color: #2563eb;
 }
 
 .resume-left strong,
@@ -483,36 +545,48 @@
 }
 
 .resume-left strong {
-  color: #344054;
-  font-size: 13px;
   margin-bottom: 3px;
+  color: #334155;
+  font-size: 13px;
 }
 
 .resume-left span {
   max-width: 520px;
   overflow: hidden;
+  color: #64748b;
+  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #667085;
-  font-size: 12px;
 }
 
 .view-resume-btn {
   min-height: 38px;
-  padding: 0 13px;
   flex-shrink: 0;
-  color: #4f46e5;
+  padding: 0 13px;
+  border: 1px solid #bfdbfe;
   background: #ffffff;
-  border: 1px solid #c7d2fe;
+  color: #2563eb;
   text-decoration: none;
   font-size: 12px;
 }
 
 .view-resume-btn:hover {
-  background: #eef2ff;
+  background: #eff6ff;
+  border-color: #93c5fd;
 }
 
-/* ---------------- Actions ---------------- */
+/* =========================================================
+   INTERVIEW AREA
+   ========================================================= */
+
+.recruiter-candidate-card > div[style*="marginTop"] {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .candidate-actions {
   display: flex;
@@ -531,26 +605,41 @@
 }
 
 .shortlist-btn {
+  border: 1px solid #2563eb;
+  background: #2563eb;
   color: #ffffff;
-  background: #d97706;
-  box-shadow: 0 5px 13px rgba(217, 119, 6, 0.15);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.shortlist-btn:hover {
+  background: #1d4ed8;
 }
 
 .select-btn {
-  color: #ffffff;
+  border: 1px solid #16a34a;
   background: #16a34a;
-  box-shadow: 0 5px 13px rgba(22, 163, 74, 0.15);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.14);
+}
+
+.select-btn:hover {
+  background: #15803d;
 }
 
 .reject-btn {
-  color: #b42318;
+  border: 1px solid #fecaca;
   background: #ffffff;
-  border: 1px solid #fecdca;
+  color: #b91c1c;
 }
 
 .reject-btn:hover {
-  background: #fff5f4;
+  background: #fff5f5;
+  border-color: #fca5a5;
 }
+
+/* =========================================================
+   FINAL STATUS
+   ========================================================= */
 
 .final-status {
   display: inline-flex;
@@ -559,49 +648,68 @@
   gap: 8px;
   min-height: 40px;
   padding: 0 15px;
-  border-radius: 10px;
+  border-radius: 9px;
   font-size: 13px;
   font-weight: 700;
 }
 
 .selected-final {
-  color: #15803d;
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
+  color: #15803d;
 }
 
 .rejected-final {
-  color: #b91c1c;
   background: #fff5f5;
   border: 1px solid #fecaca;
+  color: #b91c1c;
 }
 
-/* ---------------- Error / Empty ---------------- */
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
 
-.recruiter-error-box,
-.recruiter-empty-state {
+.secondary-btn {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid #dbe2ea;
   background: #ffffff;
-  border: 1px solid #e5e9f0;
-  border-radius: 18px;
-  box-shadow: 0 6px 22px rgba(16, 24, 40, 0.045);
+  color: #475569;
 }
+
+.secondary-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
 
 .recruiter-error-box {
-  padding: 22px;
   display: flex;
   align-items: center;
   gap: 15px;
+  padding: 21px;
+  background: #ffffff;
+  border: 1px solid #fecaca;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.04);
 }
 
 .error-icon {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 47px;
+  height: 47px;
+  flex: 0 0 47px;
   display: grid;
   place-items: center;
-  color: #dc2626;
-  background: #fef2f2;
   border-radius: 12px;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.recruiter-error-box > div:nth-child(2) {
+  flex: 1;
 }
 
 .recruiter-error-box h3 {
@@ -612,57 +720,73 @@
 
 .recruiter-error-box p {
   margin: 4px 0 0;
-  color: #667085;
+  color: #64748b;
   font-size: 13px;
-}
-
-.recruiter-error-box > div:nth-child(2) {
-  flex: 1;
 }
 
 .retry-btn {
   min-height: 39px;
   padding: 0 13px;
-  color: #ffffff;
+  border: 1px solid #dc2626;
   background: #dc2626;
+  color: #ffffff;
 }
+
+.retry-btn:hover {
+  background: #b91c1c;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
 
 .recruiter-empty-state {
   padding: 70px 25px;
   text-align: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 17px;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
 }
 
 .empty-state-icon {
   width: 74px;
   height: 74px;
-  margin: 0 auto 18px;
   display: grid;
   place-items: center;
-  color: #4f46e5;
-  background: #eef2ff;
+  margin: 0 auto 18px;
   border-radius: 20px;
+  background: #eff6ff;
+  color: #2563eb;
 }
 
 .recruiter-empty-state h2 {
   margin: 0;
-  color: #101828;
+  color: #0f172a;
   font-size: 24px;
 }
 
 .recruiter-empty-state p {
   margin: 8px 0 22px;
-  color: #667085;
+  color: #64748b;
+  font-size: 14px;
 }
 
 .empty-back-btn {
   min-height: 42px;
   padding: 0 15px;
+  background: #2563eb;
   color: #ffffff;
-  background: #4f46e5;
   text-decoration: none;
 }
 
-/* ---------------- Loading ---------------- */
+.empty-back-btn:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
 
 .recruiter-applicants-loading {
   min-height: 70vh;
@@ -671,28 +795,29 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
-  background: #f5f7fb;
+  background: #f8fafc;
   text-align: center;
 }
 
 .recruiter-spinner {
   width: 42px;
   height: 42px;
-  border: 4px solid #e0e7ff;
-  border-top-color: #4f46e5;
+  margin-bottom: 18px;
+  border: 4px solid #dbeafe;
+  border-top-color: #2563eb;
   border-radius: 50%;
   animation: recruiter-spin 0.8s linear infinite;
-  margin-bottom: 18px;
 }
 
 .recruiter-applicants-loading h3 {
   margin: 0;
-  color: #101828;
+  color: #0f172a;
+  font-size: 18px;
 }
 
 .recruiter-applicants-loading p {
   margin: 7px 0 0;
-  color: #667085;
+  color: #64748b;
   font-size: 14px;
 }
 
@@ -702,9 +827,35 @@
   }
 }
 
-/* ---------------- Responsive ---------------- */
+/* =========================================================
+   INTERVIEW MODAL
+   ========================================================= */
 
-@media (max-width: 1000px) {
+/* Improve modal controls that currently use inline styles */
+
+input[type="datetime-local"],
+input[type="url"],
+input[type="text"],
+select,
+textarea {
+  font-family: inherit;
+}
+
+input[type="datetime-local"]:focus,
+input[type="url"]:focus,
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
   .applicant-stat-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -712,13 +863,21 @@
   .candidate-details {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .candidate-detail:last-child {
+    grid-column: span 2;
+  }
 }
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
   .recruiter-header-container,
   .recruiter-main {
-    padding-left: 17px;
     padding-right: 17px;
+    padding-left: 17px;
   }
 
   .recruiter-header-content,
@@ -744,6 +903,15 @@
 
   .candidate-details {
     grid-template-columns: 1fr;
+  }
+
+  .candidate-detail:last-child {
+    grid-column: auto;
+  }
+
+  .application-date {
+    width: 100%;
+    padding-top: 0;
   }
 
   .candidate-actions {
@@ -774,5 +942,48 @@
 
   .retry-btn {
     width: 100%;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+  .recruiter-header-container {
+    padding-top: 19px;
+    padding-bottom: 25px;
+  }
+
+  .recruiter-main {
+    padding-top: 20px;
+  }
+
+  .recruiter-header-content h1 {
+    font-size: 30px;
+  }
+
+  .recruiter-candidate-card {
+    border-radius: 14px;
+  }
+
+  .candidate-profile {
+    align-items: flex-start;
+  }
+
+  .candidate-avatar {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+    border-radius: 13px;
+    font-size: 15px;
+  }
+
+  .candidate-name-row h3 {
+    font-size: 17px;
+  }
+
+  .candidate-actions {
+    gap: 8px;
   }
 }

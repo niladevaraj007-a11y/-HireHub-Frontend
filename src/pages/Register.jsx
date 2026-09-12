@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -42,8 +41,8 @@ function Register() {
     setSuccess("");
 
     if (
-      !formData.fullName ||
-      !formData.email ||
+      !formData.fullName.trim() ||
+      !formData.email.trim() ||
       !formData.password
     ) {
       setError("Please fill in all required fields.");
@@ -58,16 +57,20 @@ function Register() {
     try {
       setLoading(true);
 
-      const response = await api.post(
-        "/auth/register",
-        formData
-      );
+      const registrationData = {
+        fullName: formData.fullName.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+        role: formData.role,
+      };
+
+      console.log("Registration request:", registrationData);
+
+      const response = await api.post("/auth/register", registrationData);
 
       console.log("Registration response:", response.data);
 
-      setSuccess(
-        "Registration successful! Redirecting to login..."
-      );
+      setSuccess("Registration successful! Redirecting to login...");
 
       setTimeout(() => {
         navigate("/login");
@@ -89,7 +92,6 @@ function Register() {
   return (
     <div className="auth-page">
       <div className="auth-container register-container">
-
         <div className="auth-brand">
           <div className="auth-logo">
             <Briefcase size={25} />
@@ -97,20 +99,14 @@ function Register() {
 
           <h1>Create your account</h1>
 
-          <p>
-            Join HireHub and take the next step in your career.
-          </p>
+          <p>Join HireHub and take the next step in your career.</p>
         </div>
 
         <div className="auth-card card">
-
           <form onSubmit={handleSubmit}>
-
             {/* Full Name */}
             <div className="form-group">
-              <label htmlFor="fullName">
-                Full Name
-              </label>
+              <label htmlFor="fullName">Full Name</label>
 
               <div className="input-wrapper">
                 <User size={18} />
@@ -129,9 +125,7 @@ function Register() {
 
             {/* Email */}
             <div className="form-group">
-              <label htmlFor="register-email">
-                Email Address
-              </label>
+              <label htmlFor="register-email">Email Address</label>
 
               <div className="input-wrapper">
                 <Mail size={18} />
@@ -150,9 +144,7 @@ function Register() {
 
             {/* Password */}
             <div className="form-group">
-              <label htmlFor="register-password">
-                Password
-              </label>
+              <label htmlFor="register-password">Password</label>
 
               <div className="input-wrapper">
                 <Lock size={18} />
@@ -170,100 +162,76 @@ function Register() {
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() =>
-                    setShowPassword(!showPassword)
-                  }
-                  aria-label={
-                    showPassword
-                      ? "Hide password"
-                      : "Show password"
-                  }
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
-                  {showPassword ? (
-                    <EyeOff size={18} />
-                  ) : (
-                    <Eye size={18} />
-                  )}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
             {/* Account Type */}
             <div className="form-group">
-              <label htmlFor="role">
-                Account Type
-              </label>
+              <fieldset className="role-fieldset">
+                <legend>Account Type</legend>
 
-              <div className="role-options">
-
-                {/* Job Seeker */}
-                <label
-                  className={
-                    formData.role === "JOB_SEEKER"
-                      ? "role-option selected"
-                      : "role-option"
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="JOB_SEEKER"
-                    checked={
+                <div className="role-options">
+                  {/* Job Seeker */}
+                  <label
+                    className={
                       formData.role === "JOB_SEEKER"
+                        ? "role-option selected"
+                        : "role-option"
                     }
-                    onChange={handleChange}
-                  />
+                    aria-label="Job Seeker"
+                  >
+                    <input
+                      type="radio"
+                      name="role"
+                      value="JOB_SEEKER"
+                      checked={formData.role === "JOB_SEEKER"}
+                      onChange={handleChange}
+                    />
 
-                  <span>
-                    <strong>Job Seeker</strong>
-                    <small>
-                      Find jobs and manage applications
-                    </small>
-                  </span>
-                </label>
+                    <span>
+                      <strong>Job Seeker</strong>
 
-                {/* Recruiter */}
-                <label
-                  className={
-                    formData.role === "RECRUITER"
-                      ? "role-option selected"
-                      : "role-option"
-                  }
-                >
-                  <input
-                    type="radio"
-                    name="role"
-                    value="RECRUITER"
-                    checked={
+                      <small>Find jobs and manage applications</small>
+                    </span>
+                  </label>
+
+                  {/* Recruiter */}
+                  <label
+                    className={
                       formData.role === "RECRUITER"
+                        ? "role-option selected"
+                        : "role-option"
                     }
-                    onChange={handleChange}
-                  />
+                    aria-label="Recruiter"
+                  >
+                    <input
+                      type="radio"
+                      name="role"
+                      value="RECRUITER"
+                      checked={formData.role === "RECRUITER"}
+                      onChange={handleChange}
+                    />
 
-                  <span>
-                    <strong>Recruiter</strong>
-                    <small>
-                      Post jobs and find candidates
-                    </small>
-                  </span>
-                </label>
+                    <span>
+                      <strong>Recruiter</strong>
 
-              </div>
+                      <small>Post jobs and find candidates</small>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
             </div>
 
             {/* Error */}
-            {error && (
-              <div className="auth-error">
-                {error}
-              </div>
-            )}
+            {error && <div className="auth-error">{error}</div>}
 
             {/* Success */}
-            {success && (
-              <div className="auth-success">
-                {success}
-              </div>
-            )}
+            {success && <div className="auth-success">{success}</div>}
 
             {/* Submit */}
             <button
@@ -271,37 +239,28 @@ function Register() {
               className="primary-btn auth-submit"
               disabled={loading}
             >
-              {loading
-                ? "Creating Account..."
-                : "Create Account"}
+              {loading ? "Creating Account..." : "Create Account"}
 
               {!loading && <ArrowRight size={18} />}
             </button>
-
           </form>
 
           <div className="auth-divider">
             <span>Already have an account?</span>
           </div>
 
-          <Link
-            to="/login"
-            className="secondary-btn auth-register"
-          >
+          <Link to="/login" className="secondary-btn auth-register">
             Sign In
           </Link>
-
         </div>
 
         <p className="auth-footer">
-          By creating an account, you agree to HireHub's terms
-          and privacy policy.
+          By creating an account, you agree to HireHub's terms and privacy
+          policy.
         </p>
-
       </div>
     </div>
   );
 }
 
 export default Register;
-

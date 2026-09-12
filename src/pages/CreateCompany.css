@@ -1,0 +1,740 @@
+/* =========================================================
+   HIREHUB - CREATE COMPANY PAGE
+   ========================================================= */
+
+.create-company-page {
+  min-height: calc(100vh - 70px);
+  background: #f8fafc;
+  padding: 36px 24px 60px;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.create-company-topbar {
+  max-width: 1080px;
+  margin: 0 auto 28px;
+}
+
+.create-company-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 42px;
+  padding: 0 15px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #475569;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.create-company-back:hover {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #2563eb;
+  transform: translateX(-2px);
+}
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.create-company-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.create-company-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.create-company-heading-icon {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dbeafe;
+  border-radius: 15px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.create-company-eyebrow {
+  margin-bottom: 6px;
+
+  color: #2563eb;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.9px;
+}
+
+.create-company-heading h1 {
+  margin: 0 0 7px;
+
+  color: #0f172a;
+
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.create-company-heading p {
+  max-width: 680px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.create-company-card {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 8px rgba(15, 23, 42, 0.03),
+    0 16px 40px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.create-company-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 26px 32px 22px;
+}
+
+.create-company-card-header h2 {
+  margin: 0 0 5px;
+
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.create-company-card-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.required-note {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.required-note span {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.create-company-divider {
+  height: 1px;
+  background: #eef2f7;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.create-company-form {
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.create-company-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-company-field label {
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.create-company-field label span {
+  color: #ef4444;
+}
+
+.create-company-field small {
+  color: #94a3b8;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
+
+.create-company-input {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.create-company-input > svg {
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+
+  color: #94a3b8;
+
+  pointer-events: none;
+
+  transition: color 0.2s ease;
+}
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+   ========================================================= */
+
+.create-company-input input,
+.create-company-input select,
+.create-company-input textarea {
+  width: 100%;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #0f172a;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.create-company-input input,
+.create-company-input select {
+  height: 48px;
+
+  padding: 0 15px 0 45px;
+}
+
+.create-company-input textarea {
+  min-height: 130px;
+
+  padding: 14px 15px 14px 45px;
+
+  resize: vertical;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.create-company-input input::placeholder,
+.create-company-input textarea::placeholder {
+  color: #a8b3c2;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.create-company-input input:focus,
+.create-company-input textarea:focus,
+.create-company-input select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+.create-company-input:focus-within > svg {
+  color: #2563eb;
+}
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.create-company-input select {
+  appearance: none;
+
+  cursor: pointer;
+
+  padding-right: 45px;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #64748b 50%),
+    linear-gradient(135deg, #64748b 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 18px) 21px,
+    calc(100% - 13px) 21px;
+
+  background-size:
+    5px 5px,
+    5px 5px;
+
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   TWO COLUMN ROW
+   ========================================================= */
+
+.create-company-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.create-company-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fef2f2;
+  color: #b91c1c;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.create-company-error svg {
+  min-width: 18px;
+}
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.create-company-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+
+  background: #f0fdf4;
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.create-company-success svg {
+  min-width: 18px;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.create-company-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  padding-top: 6px;
+}
+
+/* =========================================================
+   CANCEL
+   ========================================================= */
+
+.create-company-cancel {
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #475569;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.create-company-cancel:hover:not(:disabled) {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.create-company-submit {
+  min-width: 180px;
+  height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.create-company-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+
+  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.22);
+
+  transform: translateY(-1px);
+}
+
+.create-company-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.create-company-submit:disabled,
+.create-company-cancel:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   FOOTER NOTE
+   ========================================================= */
+
+.create-company-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  max-width: 760px;
+
+  margin: 20px auto 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+.create-company-footer svg {
+  min-width: 16px;
+  color: #22c55e;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.create-company-loading {
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8fafc;
+}
+
+.create-company-loading-card {
+  min-width: 270px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+
+  color: #64748b;
+
+  text-align: center;
+}
+
+.create-company-loading-card p {
+  margin: 14px 0 0;
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid #dbeafe;
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: createCompanySpin 0.8s linear infinite;
+}
+
+.button-spinner {
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: createCompanySpin 0.7s linear infinite;
+}
+
+@keyframes createCompanySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .create-company-page {
+    padding: 28px 18px 45px;
+  }
+
+  .create-company-heading {
+    gap: 14px;
+  }
+
+  .create-company-heading-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+  }
+
+  .create-company-heading h1 {
+    font-size: 25px;
+  }
+
+  .create-company-heading p {
+    font-size: 14px;
+  }
+
+  .create-company-card-header {
+    padding: 23px 22px 20px;
+  }
+
+  .create-company-form {
+    padding: 24px 22px;
+  }
+
+  .create-company-row {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .create-company-page {
+    padding: 20px 12px 35px;
+  }
+
+  .create-company-topbar {
+    margin-bottom: 22px;
+  }
+
+  .create-company-back {
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .create-company-back span {
+    display: none;
+  }
+
+  .create-company-heading {
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .create-company-heading-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 12px;
+  }
+
+  .create-company-heading h1 {
+    font-size: 21px;
+  }
+
+  .create-company-heading p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .create-company-eyebrow {
+    font-size: 10px;
+  }
+
+  .create-company-card {
+    border-radius: 14px;
+  }
+
+  .create-company-card-header {
+    display: block;
+    padding: 20px 17px;
+  }
+
+  .required-note {
+    margin-top: 8px;
+  }
+
+  .create-company-form {
+    padding: 20px 17px;
+    gap: 20px;
+  }
+
+  .create-company-input input,
+  .create-company-input select {
+    height: 46px;
+  }
+
+  .create-company-input textarea {
+    min-height: 120px;
+  }
+
+  .create-company-actions {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .create-company-submit,
+  .create-company-cancel {
+    width: 100%;
+  }
+
+  .create-company-footer {
+    align-items: flex-start;
+    font-size: 11px;
+  }
+}

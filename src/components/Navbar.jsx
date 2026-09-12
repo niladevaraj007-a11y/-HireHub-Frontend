@@ -55,7 +55,7 @@ function getUserName(user) {
 }
 
 /* =========================================================
-   GET ROLE
+   GET USER ROLE
 ========================================================= */
 
 function getUserRole(user) {
@@ -152,11 +152,7 @@ function Navbar() {
 
       setNotificationLoading(true);
 
-      console.log("Loading notifications for user:", userId);
-
       const response = await api.get(`/notifications/user/${userId}`);
-
-      console.log("Notifications response:", response.data);
 
       const notificationData = normalizeNotifications(response.data);
 
@@ -393,6 +389,8 @@ function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
+
+    setNotificationOpen(false);
   };
 
   /* =======================================================
@@ -406,10 +404,6 @@ function Navbar() {
   const isRecruiter = role === "RECRUITER";
 
   const isJobSeeker = role === "JOB_SEEKER";
-
-  console.log("Navbar user:", user);
-
-  console.log("Navbar role:", role);
 
   /* =======================================================
      UI
@@ -446,7 +440,7 @@ function Navbar() {
 
         <div className={menuOpen ? "navbar-links active" : "navbar-links"}>
           {/* =================================================
-              PUBLIC
+              PUBLIC NAVIGATION
           ================================================== */}
 
           <Link to="/" onClick={closeMenu}>
@@ -488,12 +482,13 @@ function Navbar() {
               className="recruiter-nav-link"
             >
               <BriefcaseBusiness size={17} />
-              My Jobs
+
+              <span>My Jobs</span>
             </Link>
           )}
 
           {/* =================================================
-              NOTIFICATION
+              NOTIFICATIONS
           ================================================== */}
 
           {isLoggedIn && (
@@ -514,9 +509,9 @@ function Navbar() {
                 )}
               </button>
 
-              {/* =================================================
+              {/* =========================================
                   NOTIFICATION DROPDOWN
-              ================================================== */}
+              ========================================== */}
 
               {notificationOpen && (
                 <div className="notification-dropdown">
@@ -613,7 +608,7 @@ function Navbar() {
             <Link to="/profile" className="profile-link" onClick={closeMenu}>
               <UserCircle size={17} />
 
-              {userName}
+              <span>{userName}</span>
             </Link>
           )}
 
@@ -628,7 +623,8 @@ function Navbar() {
               onClick={handleLogout}
             >
               <LogOut size={17} />
-              Logout
+
+              <span>Logout</span>
             </button>
           )}
 
