@@ -1,10 +1,28 @@
 import axios from "axios";
 
+// =========================================================
+// API BASE URL
+// =========================================================
+//
+// Local development:
+//   http://localhost:8080/api
+//
+// Production:
+//   Set VITE_API_URL in your frontend hosting environment:
+//
+//   VITE_API_URL=https://hirehub-backend-1-qg2a.onrender.com/api
+//
+// =========================================================
+
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+  import.meta.env.VITE_API_URL?.trim() || "http://localhost:8080/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 30000,
+  headers: {
+    Accept: "application/json",
+  },
 });
 
 // =========================================================
@@ -13,28 +31,32 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    // -------------------------------------------------------
+    // JWT TOKEN
+    // -------------------------------------------------------
+
     const token = localStorage.getItem("token");
 
-    // Add JWT token
     if (token) {
+      config.headers = config.headers || {};
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    // =======================================================
-    // FORM DATA REQUEST
-    // =======================================================
+    // -------------------------------------------------------
+    // FORM DATA
+    // -------------------------------------------------------
+    //
+    // For FormData, DO NOT manually set Content-Type.
+    // The browser must generate the multipart boundary.
+    //
+    // -------------------------------------------------------
 
     const isFormData =
       typeof FormData !== "undefined" && config.data instanceof FormData;
 
-    if (isFormData) {
-      // IMPORTANT:
-      // Never force Content-Type for FormData.
-      // The browser/Axios adds:
-      //
-      // multipart/form-data; boundary=...
-      //
+    config.headers = config.headers || {};
 
+    if (isFormData) {
       delete config.headers["Content-Type"];
       delete config.headers["content-type"];
     } else {
@@ -59,6 +81,15 @@ api.interceptors.response.use(
   },
 
   (error) => {
+    // -------------------------------------------------------
+    // 401 UNAUTHORIZED
+    // -------------------------------------------------------
+    //
+    // Only clear authentication when the server explicitly
+    // says the token/session is unauthorized.
+    //
+    // -------------------------------------------------------
+
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
