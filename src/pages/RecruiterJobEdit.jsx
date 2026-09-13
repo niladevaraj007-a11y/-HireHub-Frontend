@@ -176,7 +176,10 @@ function RecruiterJobEdit() {
         const recruiterUserId = getRecruiterUserIdFromValue(storedUser);
 
         if (recruiterUserId !== null) {
-          console.log(`User found in localStorage key "${key}":`, JSON.parse(storedUser));
+          console.log(
+            `User found in localStorage key "${key}":`,
+            JSON.parse(storedUser),
+          );
           console.log("Recruiter User ID:", recruiterUserId);
           return recruiterUserId;
         }

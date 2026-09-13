@@ -8,6 +8,7 @@ import {
   Bell,
   Check,
   BriefcaseBusiness,
+  Building2,
 } from "lucide-react";
 
 import api from "../services/api";
@@ -476,15 +477,31 @@ function Navbar() {
           ================================================== */}
 
           {isLoggedIn && isRecruiter && (
-            <Link
-              to="/recruiter/jobs"
-              onClick={closeMenu}
-              className="recruiter-nav-link"
-            >
-              <BriefcaseBusiness size={17} />
+            <>
+              {/* MY JOBS */}
 
-              <span>My Jobs</span>
-            </Link>
+              <Link
+                to="/recruiter/jobs"
+                onClick={closeMenu}
+                className="recruiter-nav-link"
+              >
+                <BriefcaseBusiness size={17} />
+
+                <span>My Jobs</span>
+              </Link>
+
+              {/* COMPANY */}
+
+              <Link
+                to="/recruiter/company"
+                onClick={closeMenu}
+                className="recruiter-nav-link"
+              >
+                <Building2 size={17} />
+
+                <span>Company</span>
+              </Link>
+            </>
           )}
 
           {/* =================================================

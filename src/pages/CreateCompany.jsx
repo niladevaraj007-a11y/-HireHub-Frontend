@@ -50,7 +50,17 @@ function CreateCompany() {
           return;
         }
 
-        const user = JSON.parse(storedUser);
+        let user;
+
+        try {
+          user = JSON.parse(storedUser);
+        } catch (parseError) {
+          console.error("Invalid stored user:", parseError);
+
+          localStorage.removeItem("user");
+          navigate("/login");
+          return;
+        }
 
         if (user.role !== "RECRUITER") {
           setError("Only recruiters can create a company.");
@@ -68,14 +78,39 @@ function CreateCompany() {
 
         const response = await api.get(`/recruiters/user/${userId}`);
 
-        console.log("Recruiter:", response.data);
+        console.log("Recruiter response:", response.data);
 
-        setRecruiter(response.data);
+        if (!response.data) {
+          setError("Recruiter profile was not found.");
+          return;
+        }
+
+        const recruiterData = response.data;
+
+        setRecruiter(recruiterData);
+
+        // -----------------------------------------------------
+        // If recruiter already has a company, do not create
+        // another one.
+        // -----------------------------------------------------
+
+        if (recruiterData.companyId) {
+          setError(
+            "Your recruiter account is already associated with a company.",
+          );
+        }
       } catch (err) {
         console.error("Failed to load recruiter:", err);
 
+        if (err.response?.status === 401) {
+          setError("Your session has expired. Please login again.");
+          return;
+        }
+
         setError(
-          err.response?.data?.message || "Unable to load recruiter profile.",
+          err.response?.data?.message ||
+            err.response?.data?.error ||
+            "Unable to load recruiter profile.",
         );
       } finally {
         setLoadingRecruiter(false);
@@ -96,6 +131,44 @@ function CreateCompany() {
       ...previous,
       [name]: value,
     }));
+
+    // Clear old messages when user starts editing.
+    if (error) {
+      setError("");
+    }
+
+    if (success) {
+      setSuccess("");
+    }
+  };
+
+  // =========================================================
+  // VALIDATION
+  // =========================================================
+
+  const validateForm = () => {
+    if (!formData.companyName.trim()) {
+      setError("Company name is required.");
+      return false;
+    }
+
+    if (formData.companyName.trim().length < 2) {
+      setError("Company name must contain at least 2 characters.");
+      return false;
+    }
+
+    if (formData.website.trim()) {
+      try {
+        new URL(formData.website.trim());
+      } catch {
+        setError(
+          "Please enter a valid website URL, for example https://example.com",
+        );
+        return false;
+      }
+    }
+
+    return true;
   };
 
   // =========================================================
@@ -108,13 +181,29 @@ function CreateCompany() {
     setError("");
     setSuccess("");
 
+    // -------------------------------------------------------
+    // Recruiter validation
+    // -------------------------------------------------------
+
     if (!recruiter?.recruiterId) {
-      setError("Recruiter profile was not found.");
+      setError("Recruiter profile was not found. Please login again.");
       return;
     }
 
-    if (!formData.companyName.trim()) {
-      setError("Company name is required.");
+    // -------------------------------------------------------
+    // Prevent duplicate company creation
+    // -------------------------------------------------------
+
+    if (recruiter.companyId) {
+      setError("Your recruiter account is already associated with a company.");
+      return;
+    }
+
+    // -------------------------------------------------------
+    // Form validation
+    // -------------------------------------------------------
+
+    if (!validateForm()) {
       return;
     }
 
@@ -126,30 +215,71 @@ function CreateCompany() {
         description: formData.description.trim(),
         website: formData.website.trim(),
         location: formData.location.trim(),
-        companySize: formData.companySize,
+        companySize: formData.companySize.trim(),
       };
 
-      console.log("Creating company:", companyData);
+      console.log("Creating company...");
+      console.log("Recruiter ID:", recruiter.recruiterId);
+      console.log("Company data:", companyData);
+
+      // -----------------------------------------------------
+      // CREATE COMPANY
+      // -----------------------------------------------------
 
       const response = await api.post(
         `/companies/recruiter/${recruiter.recruiterId}`,
         companyData,
       );
 
-      console.log("Company created:", response.data);
+      console.log("Company created successfully:", response.data);
 
       setSuccess("Company created successfully!");
 
+      // -----------------------------------------------------
+      // Update local recruiter state with the new company ID
+      // -----------------------------------------------------
+
+      const createdCompany = response.data;
+
+      if (createdCompany?.companyId) {
+        setRecruiter((previous) => ({
+          ...previous,
+          companyId: createdCompany.companyId,
+        }));
+      }
+
+      // -----------------------------------------------------
+      // Redirect to My Jobs
+      // -----------------------------------------------------
+
       setTimeout(() => {
-        navigate("/recruiter/jobs");
+        navigate("/recruiter/jobs", {
+          replace: true,
+        });
       }, 1200);
     } catch (err) {
       console.error("Company creation failed:", err);
 
-      const message =
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        "Unable to create company.";
+      let message = "Unable to create company.";
+
+      if (err.response?.data) {
+        if (typeof err.response.data === "string") {
+          message = err.response.data;
+        } else {
+          message =
+            err.response.data.message ||
+            err.response.data.error ||
+            err.response.data.details ||
+            message;
+        }
+      }
+
+      // Handle duplicate/company association errors clearly.
+      if (err.response?.status === 400 || err.response?.status === 409) {
+        message =
+          err.response?.data?.message ||
+          "Your recruiter account may already be associated with a company.";
+      }
 
       setError(message);
     } finally {
@@ -166,7 +296,65 @@ function CreateCompany() {
       <div className="create-company-loading">
         <div className="create-company-loading-card">
           <div className="loading-spinner"></div>
+
           <p>Loading recruiter profile...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================
+  // ALREADY HAS COMPANY
+  // =========================================================
+
+  if (recruiter?.companyId) {
+    return (
+      <div className="create-company-page">
+        <div className="create-company-topbar">
+          <button
+            type="button"
+            className="create-company-back"
+            onClick={() => navigate("/recruiter/jobs")}
+          >
+            <ArrowLeft size={18} />
+            <span>Back to My Jobs</span>
+          </button>
+        </div>
+
+        <div className="create-company-container">
+          <div className="create-company-card">
+            <div className="create-company-success-page">
+              <div className="success-icon-wrapper">
+                <CheckCircle size={48} />
+              </div>
+
+              <h1>Company Already Created</h1>
+
+              <p>
+                Your recruiter account is already associated with a company. You
+                can manage your company or start posting jobs.
+              </p>
+
+              <div className="already-company-actions">
+                <button
+                  type="button"
+                  className="create-company-cancel"
+                  onClick={() => navigate("/recruiter/company")}
+                >
+                  Manage Company
+                </button>
+
+                <button
+                  type="button"
+                  className="create-company-submit"
+                  onClick={() => navigate("/recruiter/jobs")}
+                >
+                  <Building2 size={18} />
+                  Go to My Jobs
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -187,6 +375,7 @@ function CreateCompany() {
           type="button"
           className="create-company-back"
           onClick={() => navigate("/recruiter/jobs")}
+          disabled={saving}
         >
           <ArrowLeft size={18} />
           <span>Back to My Jobs</span>
@@ -259,6 +448,8 @@ function CreateCompany() {
                   value={formData.companyName}
                   onChange={handleChange}
                   autoComplete="organization"
+                  disabled={saving}
+                  maxLength={150}
                 />
               </div>
 
@@ -282,6 +473,8 @@ function CreateCompany() {
                   value={formData.description}
                   onChange={handleChange}
                   rows={5}
+                  disabled={saving}
+                  maxLength={2000}
                 />
               </div>
 
@@ -310,6 +503,7 @@ function CreateCompany() {
                     value={formData.website}
                     onChange={handleChange}
                     autoComplete="url"
+                    disabled={saving}
                   />
                 </div>
               </div>
@@ -328,6 +522,8 @@ function CreateCompany() {
                     value={formData.location}
                     onChange={handleChange}
                     autoComplete="address-level2"
+                    disabled={saving}
+                    maxLength={150}
                   />
                 </div>
               </div>
@@ -348,6 +544,7 @@ function CreateCompany() {
                   name="companySize"
                   value={formData.companySize}
                   onChange={handleChange}
+                  disabled={saving}
                 >
                   <option value="">Select company size</option>
 
@@ -411,9 +608,7 @@ function CreateCompany() {
               >
                 {saving ? (
                   <>
-                    <span className="button-spinner"></span>
-                    {' '}
-                    Creating Company...
+                    <span className="button-spinner"></span> Creating Company...
                   </>
                 ) : (
                   <>

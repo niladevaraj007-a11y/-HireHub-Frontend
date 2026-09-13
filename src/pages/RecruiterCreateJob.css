@@ -1,212 +1,162 @@
 /* =========================================================
-   HIREHUB - RECRUITER CREATE JOB
-   ========================================================= */
-
-* {
-  box-sizing: border-box;
-}
+   HIREHUB - CREATE JOB
+   WHITE + BLUE PROFESSIONAL DESIGN
+========================================================= */
 
 .create-job-page {
   min-height: 100vh;
-  background: #f8fafc;
+  background: #f5f8fc;
   color: #0f172a;
-  padding-bottom: 70px;
 }
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 .create-job-header {
-  background: #0f172a;
-  color: #ffffff;
-  padding: 26px 20px 120px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5eaf1;
 }
 
 .create-job-header-inner {
-  width: min(1100px, 94%);
+  max-width: 1180px;
   margin: 0 auto;
+  padding: 28px 24px 32px;
 }
 
 .create-job-back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  color: #e2e8f0;
+  color: #475569;
   text-decoration: none;
-
   font-size: 14px;
   font-weight: 600;
-
-  padding: 9px 13px;
-
-  border: 1px solid #334155;
-  border-radius: 8px;
-
-  background: #1e293b;
-
-  transition: all 0.2s ease;
+  margin-bottom: 28px;
+  transition: color 0.2s ease;
 }
 
 .create-job-back-link:hover {
-  background: #273449;
-  color: #ffffff;
-  transform: translateX(-2px);
+  color: #2563eb;
 }
 
 .create-job-header-content {
-  margin-top: 36px;
+  max-width: 760px;
 }
 
 .create-job-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
   padding: 7px 12px;
-
-  border: 1px solid #334155;
-  border-radius: 999px;
-
-  background: #1e293b;
-
-  color: #cbd5e1;
-
-  font-size: 11px;
+  border-radius: 7px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
 }
 
 .create-job-header-content h1 {
-  margin: 17px 0 9px;
-
-  color: #ffffff;
-
-  font-size: clamp(32px, 4vw, 46px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  margin: 0;
+  color: #0f172a;
+  font-size: 34px;
+  line-height: 1.2;
   font-weight: 750;
+  letter-spacing: -0.7px;
 }
 
 .create-job-header-content p {
-  max-width: 650px;
-  margin: 0;
-
-  color: #94a3b8;
-
+  margin: 10px 0 0;
+  color: #64748b;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* =========================================================
    MAIN
-   ========================================================= */
+========================================================= */
 
 .create-job-main {
-  width: min(1100px, 94%);
-  margin: -65px auto 0;
-
-  position: relative;
-  z-index: 5;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
 }
 
 .create-job-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 290px;
-
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 24px;
   align-items: start;
 }
 
 /* =========================================================
    FORM CARD
-   ========================================================= */
+========================================================= */
 
 .job-form-card {
-  overflow: hidden;
-
   background: #ffffff;
-
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
-
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
 }
 
 .job-form-card-header {
   display: flex;
   align-items: center;
   gap: 14px;
-
-  padding: 25px 30px;
-
-  border-bottom: 1px solid #e2e8f0;
+  padding: 24px 28px;
+  border-bottom: 1px solid #e8edf3;
 }
 
 .job-form-header-icon {
-  width: 44px;
-  height: 44px;
-
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 10px;
-
   background: #eff6ff;
   color: #2563eb;
+  border: 1px solid #dbeafe;
+  border-radius: 9px;
 }
 
 .job-form-card-header h2 {
-  margin: 0 0 3px;
-
-  color: #0f172a;
-
-  font-size: 17px;
+  margin: 0;
+  font-size: 19px;
   font-weight: 700;
+  color: #0f172a;
 }
 
 .job-form-card-header p {
-  margin: 0;
-
+  margin: 4px 0 0;
   color: #64748b;
-
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 13px;
 }
 
 /* =========================================================
    FORM
-   ========================================================= */
+========================================================= */
 
 .job-form {
-  padding: 30px;
+  padding: 28px;
 }
-
-/* =========================================================
-   ERROR
-   ========================================================= */
 
 .create-job-error {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-
-  margin-bottom: 25px;
-  padding: 14px 15px;
-
+  padding: 13px 15px;
+  margin-bottom: 26px;
   border: 1px solid #fecaca;
-  border-radius: 9px;
-
+  border-radius: 8px;
   background: #fef2f2;
-
   color: #b91c1c;
-
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -216,23 +166,20 @@
 }
 
 /* =========================================================
-   SECTION TITLES
-   ========================================================= */
+   SECTION TITLE
+========================================================= */
 
 .create-job-section-title {
   display: flex;
   align-items: center;
   gap: 9px;
-
-  margin: 30px 0 20px;
-  padding-bottom: 12px;
-
-  border-bottom: 1px solid #e2e8f0;
-
-  color: #0f172a;
-
+  margin: 30px 0 18px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #e5eaf1;
+  color: #1e3a8a;
   font-size: 14px;
   font-weight: 750;
+  letter-spacing: 0.1px;
 }
 
 .create-job-section-title:first-of-type {
@@ -245,7 +192,7 @@
 
 /* =========================================================
    INPUT GROUP
-   ========================================================= */
+========================================================= */
 
 .create-job-input-group {
   margin-bottom: 20px;
@@ -255,13 +202,10 @@
   display: flex;
   align-items: center;
   gap: 7px;
-
   margin-bottom: 8px;
-
   color: #334155;
-
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .create-job-input-group label svg {
@@ -272,36 +216,30 @@
 .create-job-input-group textarea,
 .create-job-input-group select {
   width: 100%;
-
-  outline: none;
-
+  box-sizing: border-box;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
-
   background: #ffffff;
   color: #0f172a;
-
   font-family: inherit;
   font-size: 14px;
-
+  outline: none;
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .create-job-input-group input,
 .create-job-input-group select {
-  height: 47px;
-  padding: 0 14px;
+  height: 46px;
+  padding: 0 13px;
 }
 
 .create-job-input-group textarea {
-  min-height: 145px;
-
-  padding: 13px 14px;
-
+  min-height: 140px;
+  padding: 12px 13px;
   resize: vertical;
-
   line-height: 1.6;
 }
 
@@ -320,227 +258,196 @@
 .create-job-input-group textarea:focus,
 .create-job-input-group select:focus {
   border-color: #2563eb;
-
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: #ffffff;
 }
 
-.create-job-input-group input:disabled,
-.create-job-input-group textarea:disabled,
-.create-job-input-group select:disabled {
-  background: #f1f5f9;
-  cursor: not-allowed;
-}
-
-.create-job-helper {
-  display: block;
-
-  margin-top: 6px;
-
-  color: #64748b;
-
-  font-size: 11px;
-  line-height: 1.4;
+.create-job-input-group select {
+  cursor: pointer;
 }
 
 /* =========================================================
-   INPUT GRID
-   ========================================================= */
+   HELPER TEXT
+========================================================= */
+
+.create-job-helper {
+  display: block;
+  margin-top: 6px;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   TWO COLUMN INPUTS
+========================================================= */
 
 .create-job-input-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   gap: 18px;
 }
 
 /* =========================================================
-   FORM ACTIONS
-   ========================================================= */
+   ACTIONS
+========================================================= */
 
 .create-job-form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 11px;
-
-  margin-top: 30px;
-  padding-top: 25px;
-
-  border-top: 1px solid #e2e8f0;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid #e5eaf1;
 }
 
-.create-job-cancel-button,
-.create-job-post-button {
-  min-height: 45px;
-
-  padding: 0 20px;
-
+.create-job-cancel-button {
+  height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 650;
+  transition: all 0.2s ease;
+}
 
+.create-job-cancel-button:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.create-job-post-button {
+  min-width: 130px;
+  height: 44px;
+  padding: 0 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
-  font-size: 13px;
-  font-weight: 700;
-
-  text-decoration: none;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-.create-job-cancel-button {
-  border: 1px solid #cbd5e1;
-
-  background: #ffffff;
-
-  color: #475569;
-}
-
-.create-job-cancel-button:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
-}
-
-.create-job-post-button {
-  min-width: 125px;
-
   border: 1px solid #2563eb;
-
+  border-radius: 8px;
   background: #2563eb;
-
   color: #ffffff;
-
-  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.18);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.create-job-post-button:hover {
+.create-job-post-button:hover:not(:disabled) {
   background: #1d4ed8;
   border-color: #1d4ed8;
-
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.22);
   transform: translateY(-1px);
+}
 
-  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.25);
+.create-job-post-button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .create-job-post-button:disabled {
   opacity: 0.65;
-
   cursor: not-allowed;
-
-  transform: none;
-
-  box-shadow: none;
 }
 
 /* =========================================================
    SIDE CARD
-   ========================================================= */
+========================================================= */
 
 .create-job-side-card {
   position: sticky;
-  top: 20px;
-
-  padding: 24px;
-
+  top: 24px;
   background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 15px;
-
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
 }
 
 .create-job-side-icon {
-  width: 43px;
-  height: 43px;
-
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 16px;
-
-  border-radius: 10px;
-
+  margin-bottom: 17px;
   background: #eff6ff;
   color: #2563eb;
+  border: 1px solid #dbeafe;
+  border-radius: 9px;
 }
 
 .create-job-side-card h3 {
-  margin: 0 0 8px;
-
+  margin: 0;
   color: #0f172a;
-
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .create-job-side-card > p {
-  margin: 0 0 20px;
-
+  margin: 8px 0 24px;
   color: #64748b;
-
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 /* =========================================================
    SIDE POINTS
-   ========================================================= */
+========================================================= */
 
 .create-job-side-point {
   display: flex;
-  gap: 10px;
-
-  margin-bottom: 16px;
-}
-
-.create-job-side-point:last-child {
-  margin-bottom: 0;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px 0;
+  border-top: 1px solid #edf1f5;
 }
 
 .create-job-side-point-icon {
-  width: 26px;
-  height: 26px;
-
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 7px;
-
+  margin-top: 1px;
+  border-radius: 50%;
   background: #eff6ff;
   color: #2563eb;
 }
 
 .create-job-side-point strong {
   display: block;
-
   margin-bottom: 3px;
-
   color: #334155;
-
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .create-job-side-point span {
   display: block;
-
   color: #64748b;
-
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 /* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 900px) {
   .create-job-layout {
@@ -552,46 +459,25 @@
   }
 }
 
-/* =========================================================
-   RESPONSIVE - MOBILE
-   ========================================================= */
-
 @media (max-width: 650px) {
-  .create-job-header {
-    padding: 22px 16px 105px;
-  }
-
   .create-job-header-inner {
-    width: 100%;
-  }
-
-  .create-job-header-content {
-    margin-top: 28px;
-  }
-
-  .create-job-header-content h1 {
-    font-size: 32px;
-  }
-
-  .create-job-header-content p {
-    font-size: 14px;
+    padding: 22px 16px 26px;
   }
 
   .create-job-main {
-    width: 94%;
-    margin-top: -55px;
+    padding: 22px 16px 40px;
   }
 
-  .job-form-card {
-    border-radius: 13px;
+  .create-job-header-content h1 {
+    font-size: 28px;
   }
 
   .job-form-card-header {
-    padding: 21px 18px;
+    padding: 20px;
   }
 
   .job-form {
-    padding: 22px 18px;
+    padding: 20px;
   }
 
   .create-job-input-grid {
@@ -601,6 +487,7 @@
 
   .create-job-form-actions {
     flex-direction: column-reverse;
+    align-items: stretch;
   }
 
   .create-job-cancel-button,
@@ -610,41 +497,5 @@
 
   .create-job-side-card {
     padding: 20px;
-  }
-}
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 450px) {
-  .create-job-header-content h1 {
-    font-size: 28px;
-  }
-
-  .create-job-eyebrow {
-    font-size: 10px;
-  }
-
-  .job-form-card-header {
-    align-items: flex-start;
-  }
-
-  .job-form-header-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .create-job-section-title {
-    font-size: 13px;
-  }
-
-  .create-job-input-group input,
-  .create-job-input-group select {
-    height: 45px;
-  }
-
-  .create-job-input-group textarea {
-    min-height: 130px;
   }
 }
